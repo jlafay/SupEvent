@@ -1,0 +1,41 @@
+﻿@model IEnumerable<_SupEvent.Models.Friend>
+
+@{
+    ViewBag.Title = "Friends";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Friends Management</h2>
+
+<p>
+    @Html.ActionLink("Add a Friend", "AddFriend", new { id = 1 })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nickname)
+        </th>
+        <th></th>
+    </tr>
+
+@if (Model != null)
+{
+    foreach (var item in Model) {
+        <tr>
+            <td>
+               @Html.DisplayFor(modelItem => item.Name)
+           </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nickname)
+             </td>
+             <td>
+              @Html.ActionLink("Delete", "DeleteFriend", new { id = item.FriendId })
+             </td>
+          </tr>
+}
+}
+
+</table>

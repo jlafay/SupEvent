@@ -1,0 +1,40 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("SupEvent", "Index", "Home", null, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                @if (Session["role"] != null)
+                {
+                    if (Session["role"].ToString() == "Admin")
+                    {
+                        <li>@Html.ActionLink("Admin Dashboard", "Index", "Admin/Index")</li>
+                    }
+                }
+                @if(Session["uid"] != null)
+                {
+                    <li>@Html.ActionLink("Friends", "Index", "User/Friends")</li>
+                    <li>@Html.ActionLink("My Events", "Index", "Event/Events")</li>
+                    <li>@Html.ActionLink("Friend Events", "Index", "Event/Fevents")</li>
+                }
+                @if (Session["uid"] == null)
+                { 
+                    <li>@Html.ActionLink("Register", "Index", "User/Register")</li>
+                    <li>@Html.ActionLink("Login", "Index", "User/Login")</li>
+                }
+                @if(Session["uid"] != null)
+                {
+                    <li>@Html.ActionLink("My Account", "Index", "User/ShowProfile")</li>
+                    <li>@Html.ActionLink("Logout", "Index", "User/Logout")</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

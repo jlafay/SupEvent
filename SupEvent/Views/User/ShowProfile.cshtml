@@ -1,0 +1,31 @@
+﻿@model _SupEvent.Models.User
+
+@{
+    ViewBag.Title = "My Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My profile</h2>
+
+<div>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nickname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nickname)
+        </dd>
+    </dl>
+    @Html.ActionLink("Edit your profile", "Edit", new { id = Model.UserId }) |
+    @Html.ActionLink("Reset your password", "Reset", new { id = Model.UserId })
+</div>
